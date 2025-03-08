@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     messageCard.classList.add("hidden");
 
     // Fetch message data from backend
-    fetch(`http://localhost:5000/api/messages/private/${messageId}`) // Fix endpoint here
+    fetch(`https://disappeardude.onrender.com/api/messages/private/${messageId}`) // Fix endpoint here
       .then((response) => {
         // Check for 410 status - resource is gone
         if (response.status === 410) {
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (viewMessageButton) {
     viewMessageButton.addEventListener("click", () => {
       // Fetch the message data again
-      fetch(`http://localhost:5000/api/messages/private/${messageId}`) // Fix endpoint here
+      fetch(`https://disappeardude.onrender.com/api/messages/private/${messageId}`) // Fix endpoint here
         .then((response) => response.json())
         .then((data) => {
           const message = data.message;
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // Mark message as viewed
-            fetch(`http://localhost:5000/api/messages/private/${messageId}`, {
+            fetch(`https://disappeardude.onrender.com/api/messages/private/${messageId}`, {
               method: "PATCH",
             });
 
