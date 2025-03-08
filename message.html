@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Message - Secret Confessions</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                Disappear<span class="text-purple">Dude</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="confessions.html" class="nav-link">Confessions</a>
+                <a href="confess.html" class="nav-link">Create</a>
+                <div class="auth-buttons">
+                    <a href="signin.html" class="btn btn-ghost">Sign In</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Secret Message View -->
+    <div class="container message-container">
+        <div class="card message-card" id="loadingCard">
+            <div class="card-header text-center">
+                <h2 class="card-title">Loading Secret Message</h2>
+                <p class="card-description">Please wait while we decrypt your message...</p>
+            </div>
+            <div class="card-content loading-spinner">
+                <div class="spinner"></div>
+            </div>
+        </div>
+
+        <div class="card message-card hidden" id="errorCard">
+            <div class="card-header text-center">
+                <h2 class="card-title text-red">Message Not Found</h2>
+                <p class="card-description">This message may have expired or already been viewed.</p>
+            </div>
+            <div class="card-content">
+                <div class="alert alert-error">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <h4>Message Unavailable</h4>
+                        <p id="errorMessage">This message doesn't exist or has already been viewed.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <a href="index.html" class="btn btn-primary">Return Home</a>
+            </div>
+        </div>
+
+        <div class="card message-card hidden" id="messageCard">
+            <div class="card-header text-center">
+                <h2 class="card-title" id="messageTitle">You've received a secret message</h2>
+                <p class="card-description" id="messageDescription">
+                    This message will self-destruct after viewing. You can only view it once.
+                </p>
+            </div>
+            <div class="card-content">
+                <div id="lockedMessage" class="locked-message">
+                    <div class="lock-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <p>
+                        This message is encrypted and will be permanently deleted after you view it.
+                    </p>
+                </div>
+                
+                <div id="countdownContainer" class="countdown-container">
+                    <p>This message will expire in:</p>
+                    <div class="countdown" id="countdown"></div>
+                </div>
+                
+                <div id="messageContent" class="message-content hidden"></div>
+            </div>
+            <div class="card-footer text-center">
+                <button id="viewMessageButton" class="btn btn-primary">
+                    <i class="fas fa-eye"></i> View Message
+                </button>
+                <a href="index.html" id="returnHomeButton" class="btn btn-outline hidden">Return Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Secret Confessions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/message.js"></script>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
+

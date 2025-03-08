@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Confessions - Share your thoughts, once and forever</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                Disappear<span class="text-purple">Dude</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="confessions.html" class="nav-link">Confessions</a>
+                <a href="confess.html" class="nav-link">Create</a>
+                <div class="auth-buttons">
+                    <a href="signin.html" class="btn btn-ghost">Sign In</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-pattern"></div>
+        <div class="container text-center">
+            <h1 class="hero-title">
+                <span>Secret Confessions</span>
+                <span class="text-purple">Share your thoughts, once and forever</span>
+            </h1>
+            <p class="hero-description">
+                A completely anonymous platform where your secrets are safe. Messages self-destruct after being viewed.
+            </p>
+            <div class="hero-buttons">
+                <a href="confess.html" class="btn btn-primary btn-lg">
+                    Make a Confession <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="signin.html" class="btn btn-outline btn-lg">
+                    Sign In
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comment"></i>
+                    </div>
+                    <h3 class="feature-title">Anonymous Confessions</h3>
+                    <p class="feature-description">Share your thoughts without revealing your identity. Post publicly or send privately.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="feature-title">One-Time View</h3>
+                    <p class="feature-description">Messages can only be viewed once. After viewing, they're gone forever.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title">Self-Destructing</h3>
+                    <p class="feature-description">All messages automatically expire after 24 hours, even if they haven't been viewed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container text-center">
+            <h2 class="section-title">Ready to share your secret?</h2>
+            <p class="cta-description">
+                Join thousands of users who trust our platform for their most private thoughts.
+            </p>
+            <a href="confess.html" class="btn btn-primary btn-lg">
+                Start Now <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h3 class="footer-logo">Secret<span class="text-purple">Confessions</span></h3>
+                    <p class="footer-description">
+                        A completely anonymous platform where users can post confessions and send secret messages that self-destruct after being viewed.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="confessions.html">Public Confessions</a></li>
+                        <li><a href="confess.html">Create Confession</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Secret Confessions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
