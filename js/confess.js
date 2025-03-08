@@ -78,6 +78,8 @@ document
           body: JSON.stringify({
             content: message, // ✅ Change `message` to `content`
             expiryHours: Number(expiryTime), // ✅ Change `expiryTime` to `expiryHours` and convert to Number
+            console.log("Response from server:", data);
+
           }),
         }
       );
