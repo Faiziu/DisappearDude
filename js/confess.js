@@ -107,7 +107,7 @@ if (privateMessageForm) {
         shareableLinkContainer.classList.remove("hidden");
 
         // Set link in input
-        const shareableLink = `${window.location.origin}/DisappearDude/message.html?id=${messageId}`;
+       const shareableLink = `${baseUrl}/message.html?id=${messageId}`;
         shareableLinkInput.value = shareableLink;
 
         // Update expiry time display
