@@ -54,6 +54,7 @@ document
   });
 
 // Private Message Form
+const baseUrl = window.location.origin;
 const privateMessageForm = document.getElementById("privateMessageForm");
 const createPrivateButton = document.getElementById("createPrivateButton");
 const privateMessageFormContainer = document.getElementById(
@@ -107,7 +108,7 @@ if (privateMessageForm) {
         shareableLinkContainer.classList.remove("hidden");
 
         // Set link in input
-       const shareableLink = `${baseUrl}/message.html?id=${messageId}`;
+       const shareableLink = `${baseUrl}/DisappearDude/message.html?id=${messageId}`;
         shareableLinkInput.value = shareableLink;
 
         // Update expiry time display
