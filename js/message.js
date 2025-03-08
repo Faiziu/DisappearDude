@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     viewMessageButton.addEventListener("click", async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/messages/view/${messageId}`,
+          `https://disappeardude.onrender.com/api/messages/view/${messageId}`,
           {
             method: "POST",
           }
