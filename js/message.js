@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
   const loadingCard = document.getElementById("loadingCard");
   const errorCard = document.getElementById("errorCard");
   const messageCard = document.getElementById("messageCard");
@@ -16,108 +16,184 @@ document.addEventListener("DOMContentLoaded", async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const messageId = urlParams.get("id");
 
-  // Load message from API
-  async function loadMessage() {
-    if (!messageId) {
-      showError("No message ID provided.");
-      return;
-    }
-
+  // Load message from backend
+  function loadMessage() {
+    // Show loading state
     loadingCard.classList.remove("hidden");
     errorCard.classList.add("hidden");
     messageCard.classList.add("hidden");
 
-    try {
-      const response = await fetch(
-        `https://disappeardude.onrender.com/api/messages/${messageId}`
-      );
-      if (!response.ok) throw new Error("Message not found.");
+    // Fetch message data from backend
+    fetch(`http://localhost:5000/api/messages/private/${messageId}`) // Fix endpoint here
+      .then((response) => {
+        // Check for 410 status - resource is gone
+        if (response.status === 410) {
+          errorMessage.textContent =
+            "This message has been permanently deleted.";
+          errorCard.classList.remove("hidden");
+          return; // Exit if the message is gone
+        }
 
-      const message = await response.json();
-      loadingCard.classList.add("hidden");
+        return response.json();
+      })
+      .then((data) => {
+        // Hide loading state
+        loadingCard.classList.add("hidden");
 
-      if (new Date(message.expiresAt) < new Date()) {
-        showError("This message has expired.");
-        return;
-      }
+        if (!data || !data.message) {
+          // Show error if message not found
+          errorCard.classList.remove("hidden");
+          errorMessage.textContent = "Message not found.";
+          return;
+        }
 
-      if (message.viewed) {
-        showError("This message has already been viewed.");
-        return;
-      }
+        const message = data.message;
 
-      messageCard.classList.remove("hidden");
-      initCountdown(new Date(message.expiresAt));
-    } catch (error) {
-      showError(error.message);
-    }
+        // Check if message has expired
+        const expiryDate = new Date(message.expiresAt);
+        if (expiryDate < new Date()) {
+          // Message has expired
+          errorMessage.textContent = "This message has expired.";
+          errorCard.classList.remove("hidden");
+
+          // Optionally, delete expired message from backend (if supported)
+          // Remove this part if you do not want auto deletion
+          // fetch(`http://localhost:5000/api/messages/delete/${messageId}`, {
+          //   method: "DELETE",
+          // });
+
+          return;
+        }
+
+        // Check if message has been viewed
+        if (message.viewed) {
+          // Message has already been viewed
+          errorMessage.textContent = "This message has already been viewed.";
+          errorCard.classList.remove("hidden");
+          return;
+        }
+
+        // Show message card
+        messageCard.classList.remove("hidden");
+
+        // Set up countdown timer
+        initCountdown(expiryDate);
+      })
+      .catch((error) => {
+        console.error("Error loading message:", error);
+        // Show error message
+        loadingCard.classList.add("hidden");
+        errorMessage.textContent = "Failed to load the message.";
+        errorCard.classList.remove("hidden");
+      });
   }
 
-  // Show error message
-  function showError(msg) {
-    loadingCard.classList.add("hidden");
-    errorCard.classList.remove("hidden");
-    errorMessage.textContent = msg;
-  }
-
-  // Countdown Timer
+  // Initialize countdown timer
   function initCountdown(targetDate) {
     function updateCountdown() {
       const now = new Date();
-      const diff = targetDate - now;
-      if (diff <= 0) {
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        // Timer has expired
         countdown.innerHTML = "Expired";
         return;
       }
 
-      const hours = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(
-        2,
-        "0"
-      );
-      const minutes = String(Math.floor((diff / 1000 / 60) % 60)).padStart(
-        2,
-        "0"
-      );
-      const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+      // Calculate time units
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / 1000 / 60) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
 
-      countdown.innerHTML = `${hours}:${minutes}:${seconds}`;
+      // Format time units
+      const formattedHours = hours < 10 ? `0${hours}` : hours;
+      const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+      const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
+
+      // Update countdown HTML
+      countdown.innerHTML = `
+          <div class="countdown-unit">
+            <div class="countdown-value">${formattedHours}</div>
+            <div class="countdown-label">Hours</div>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-unit">
+            <div class="countdown-value">${formattedMinutes}</div>
+            <div class="countdown-label">Minutes</div>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-unit">
+            <div class="countdown-value">${formattedSeconds}</div>
+            <div class="countdown-label">Seconds</div>
+          </div>
+        `;
     }
 
+    // Update immediately and then every second
     updateCountdown();
-    window.countdownInterval = setInterval(updateCountdown, 1000);
+    const countdownInterval = setInterval(updateCountdown, 1000);
+
+    // Store interval ID to clear it later
+    window.countdownInterval = countdownInterval;
   }
 
-  // View Message Button
+  // Handle view message button click
   if (viewMessageButton) {
-    viewMessageButton.addEventListener("click", async () => {
-      try {
-        const response = await fetch(
-          `https://disappeardude.onrender.com/api/messages/view/${messageId}`,
-          {
-            method: "POST",
+    viewMessageButton.addEventListener("click", () => {
+      // Fetch the message data again
+      fetch(`http://localhost:5000/api/messages/private/${messageId}`) // Fix endpoint here
+        .then((response) => response.json())
+        .then((data) => {
+          const message = data.message;
+          if (message) {
+            // If message is gone, do not try to mark as viewed
+            if (message.status === 410) {
+              errorMessage.textContent =
+                "This message has been permanently deleted.";
+              errorCard.classList.remove("hidden");
+              return;
+            }
+
+            // Mark message as viewed
+            fetch(`http://localhost:5000/api/messages/private/${messageId}`, {
+              method: "PATCH",
+            });
+
+            // Show message content
+            lockedMessage.classList.add("hidden");
+            countdownContainer.classList.add("hidden");
+            messageContent.classList.remove("hidden");
+            messageContent.textContent = message.content;
+
+            // Update title and description
+            messageTitle.textContent = "Secret Message";
+            messageDescription.textContent =
+              "This message has been deleted from our servers and can't be viewed again.";
+
+            // Hide view button, show return home button
+            viewMessageButton.classList.add("hidden");
+            returnHomeButton.classList.remove("hidden");
+
+            // Clear countdown interval
+            if (window.countdownInterval) {
+              clearInterval(window.countdownInterval);
+            }
           }
-        );
-        if (!response.ok) throw new Error("Failed to mark as viewed.");
-
-        const message = await response.json();
-
-        lockedMessage.classList.add("hidden");
-        countdownContainer.classList.add("hidden");
-        messageContent.classList.remove("hidden");
-        messageContent.textContent = message.content;
-        messageTitle.textContent = "Secret Message";
-        messageDescription.textContent =
-          "This message has been deleted from our servers.";
-        viewMessageButton.classList.add("hidden");
-        returnHomeButton.classList.remove("hidden");
-
-        if (window.countdownInterval) clearInterval(window.countdownInterval);
-      } catch (error) {
-        showError(error.message);
-      }
+        })
+        .catch((error) => {
+          console.error("Error viewing message:", error);
+          // Handle errors (e.g., network failure)
+        });
     });
   }
 
   // Load message on page load
-  loadMessage();
+  if (messageId) {
+    loadMessage();
+  } else {
+    // No message ID provided
+    loadingCard.classList.add("hidden");
+    errorCard.classList.remove("hidden");
+    errorMessage.textContent = "No message ID provided.";
+  }
 });
