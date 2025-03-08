@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/messages/${messageId}`
+        `https://disappeardude.onrender.com/api/messages/${messageId}`
       );
       if (!response.ok) throw new Error("Message not found.");
 
