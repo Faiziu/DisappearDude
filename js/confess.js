@@ -71,7 +71,7 @@ document
 
     try {
       const response = await fetch(
-        "https://disappeardude.onrender.com",
+        "https://disappeardude.onrender.com/api/messages/private",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
