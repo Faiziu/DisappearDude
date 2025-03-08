@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Liking message ID:", _id); // Debugging log
 
       const response = await fetch(
-        `http://localhost:5000/api/messages/${_id}/like`,
+        `https://disappeardude.onrender.com`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
