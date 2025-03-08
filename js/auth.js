@@ -191,7 +191,7 @@ function saveToLocalStorage(key, value) {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
 
-    const response = await fetch("http://localhost:5000/api/auth/signup", {
+    const response = await fetch("https://disappeardude.onrender.com", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
