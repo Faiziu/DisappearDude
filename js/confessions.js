@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const noConfessionsFound = document.getElementById("noConfessionsFound");
   const searchInput = document.getElementById("searchConfessions");
 
-  const API_URL = "http://localhost:5000/api/messages/public";
+  const API_URL = "https://disappeardude.onrender.com/api/messages/public";
 
   function formatDate(createdAt) {
     if (!createdAt) return "Unknown";
