@@ -53,52 +53,105 @@ document
     }
   });
 
-document
-  .getElementById("privateMessageForm")
-  .addEventListener("submit", async (e) => {
+// Private Message Form
+const privateMessageForm = document.getElementById("privateMessageForm");
+const createPrivateButton = document.getElementById("createPrivateButton");
+const privateMessageFormContainer = document.getElementById(
+  "private-message-form-container"
+);
+const shareableLinkContainer = document.getElementById(
+  "shareable-link-container"
+);
+const shareableLinkInput = document.getElementById("shareable-link");
+const copyLinkButton = document.getElementById("copyLinkButton");
+const createAnotherButton = document.getElementById("createAnotherButton");
+const expiryTimeDisplay = document.getElementById("expiryTimeDisplay");
+
+if (privateMessageForm) {
+  privateMessageForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const message = document.getElementById("private-message").value;
     const expiryTime = document.getElementById("expiry-time").value;
 
-    if (!message.trim()) return alert("Message cannot be empty");
+    if (!message.trim()) return;
 
-    const createPrivateButton = document.getElementById("createPrivateButton");
+    // Disable button and show loading state
     createPrivateButton.disabled = true;
     createPrivateButton.innerHTML = "Creating...";
 
-    const startTime = performance.now(); // Start time
-
     try {
+      // Send data to the backend (corrected keys)
       const response = await fetch(
-        "https://disappeardude.onrender.com/api/messages/private",
+        "http://localhost:5000/api/messages/private",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify({
-            content: message, // ✅ Change `message` to `content`
-            expiryHours: Number(expiryTime), // ✅ Change `expiryTime` to `expiryHours` and convert to Number
-            console.log("Response from server:", data);
-
+            content: message, // Corrected key: 'content'
+            expiryHours: expiryTime, // Corrected key: 'expiryHours'
           }),
         }
       );
+
       const data = await response.json();
-      alert("Private message created!");
 
-      const endTime = performance.now(); // End time
-      console.log(
-        `Private message created in ${(endTime - startTime).toFixed(2)}ms`
-      );
+      if (response.ok) {
+        // Get the generated message ID from the response
+        const messageId = data.messageId; // Corrected key: 'messageId'
 
-      // Show shareable link
-      const shareableLink = `${window.location.origin}/message.html?id=${data.messageId}`;
-      console.log(shareableLink);
-      document.getElementById("shareable-link").value = shareableLink;
+        // Show shareable link
+        privateMessageFormContainer.classList.add("hidden");
+        shareableLinkContainer.classList.remove("hidden");
+
+        // Set link in input
+        const shareableLink = `${window.location.origin}/message.html?id=${messageId}`;
+        shareableLinkInput.value = shareableLink;
+
+        // Update expiry time display
+        expiryTimeDisplay.textContent = expiryTime;
+
+        // Reset form
+        privateMessageForm.reset();
+        createPrivateButton.disabled = false;
+        createPrivateButton.innerHTML =
+          '<i class="fas fa-paper-plane"></i> Create Secret Message';
+      } else {
+        throw new Error(data.error || "Failed to create the message.");
+      }
     } catch (error) {
       console.error("Error creating private message:", error);
-    } finally {
+      // Show error message
       createPrivateButton.disabled = false;
-      createPrivateButton.innerHTML = "Create Secret Message";
+      createPrivateButton.innerHTML =
+        '<i class="fas fa-paper-plane"></i> Create Secret Message';
+      alert("Error creating the message. Please try again.");
     }
   });
+}
+
+// Copy link to clipboard
+if (copyLinkButton) {
+  copyLinkButton.addEventListener("click", () => {
+    shareableLinkInput.select();
+    document.execCommand("copy");
+
+    // Show copied feedback
+    const originalText = copyLinkButton.innerHTML;
+    copyLinkButton.innerHTML = '<i class="fas fa-check"></i>';
+
+    setTimeout(() => {
+      copyLinkButton.innerHTML = originalText;
+    }, 2000);
+  });
+}
+
+// Create another message
+if (createAnotherButton) {
+  createAnotherButton.addEventListener("click", () => {
+    shareableLinkContainer.classList.add("hidden");
+    privateMessageFormContainer.classList.remove("hidden");
+  });
+}
