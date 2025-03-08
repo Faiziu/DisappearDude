@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Confessions - Secret Confessions</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                Disappear<span class="text-purple">Dude</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="confessions.html" class="nav-link active">Confessions</a>
+                <a href="confess.html" class="nav-link">Create</a>
+                <div class="auth-buttons">
+                    <a href="signin.html" class="btn btn-ghost">Sign In</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Confessions Feed -->
+    <div class="container confessions-container">
+        <div class="confessions-header">
+            <h1>Public Confessions</h1>
+            <p>
+                Browse anonymous confessions from people around the world. Feel free to engage, but remember to be respectful.
+            </p>
+            <div class="search-container">
+                <input type="search" id="searchConfessions" placeholder="Search confessions...">
+            </div>
+        </div>
+
+        <div id="confessionsLoading" class="confessions-loading">
+            <div class="confession-card loading">
+                <div class="confession-header">
+                    <div class="avatar-placeholder"></div>
+                    <div class="author-placeholder"></div>
+                </div>
+                <div class="content-placeholder"></div>
+                <div class="actions-placeholder"></div>
+            </div>
+            <div class="confession-card loading">
+                <div class="confession-header">
+                    <div class="avatar-placeholder"></div>
+                    <div class="author-placeholder"></div>
+                </div>
+                <div class="content-placeholder"></div>
+                <div class="actions-placeholder"></div>
+            </div>
+            <div class="confession-card loading">
+                <div class="confession-header">
+                    <div class="avatar-placeholder"></div>
+                    <div class="author-placeholder"></div>
+                </div>
+                <div class="content-placeholder"></div>
+                <div class="actions-placeholder"></div>
+            </div>
+        </div>
+
+        <div id="confessionsFeed" class="confessions-feed hidden">
+            <!-- Confession cards will be inserted here by JavaScript -->
+        </div>
+
+        <div id="noConfessionsFound" class="no-confessions hidden">
+            <p>No confessions found matching your search.</p>
+        </div>
+    </div>
+
+    <!-- Confession Card Template -->
+    <template id="confessionCardTemplate">
+        <div class="confession-card">
+            <div class="confession-header">
+                <div class="avatar">
+                    <span class="avatar-text"></span>
+                </div>
+                <div class="confession-author">
+                    <p class="author-name"></p>
+                    <p class="confession-time"></p>
+                </div>
+            </div>
+            <div class="confession-content"></div>
+            <div class="confession-actions">
+                <button class="action-button like-button">
+                    <i class="far fa-heart"></i>
+                    <span class="like-count"></span>
+                </button>
+                <button class="action-button comment-button">
+                    <i class="far fa-comment"></i>
+                    <span class="comment-count"></span>
+                </button>
+                <button class="action-button share-button">
+                    <i class="fas fa-share-alt"></i>
+                    <span>Share</span>
+                </button>
+            </div>
+        </div>
+    </template>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Secret Confessions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/confessions.js"></script>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Confession - Secret Confessions</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                Disappear<span class="text-purple">Dude</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="confessions.html" class="nav-link">Confessions</a>
+                <a href="confess.html" class="nav-link active">Create</a>
+                <div class="auth-buttons">
+                    <a href="signin.html" class="btn btn-ghost">Sign In</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Confession Form -->
+    <div class="container confess-container">
+        <div class="tabs">
+            <div class="tab-list">
+                <button class="tab-button active" data-tab="public">Public Confession</button>
+                <button class="tab-button" data-tab="private">Private Message</button>
+            </div>
+            
+            <div class="tab-content active" id="public-tab">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Share a Public Confession</h2>
+                        <p class="card-description">
+                            Your confession will be visible to everyone on the platform.
+                        </p>
+                    </div>
+                    <form id="publicConfessionForm">
+                        <div class="card-content">
+                            <div class="form-group">
+                                <label for="public-message">Your Confession</label>
+                                <textarea 
+                                    id="public-message" 
+                                    placeholder="Share your thoughts anonymously..." 
+                                    required
+                                ></textarea>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="anonymous-mode" checked>
+                                <label for="anonymous-mode">Post anonymously</label>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary btn-block" id="postPublicButton">
+                                <i class="fas fa-paper-plane"></i> Post Confession
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="private-tab">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Create a Private Message</h2>
+                        <p class="card-description">
+                            This message can only be viewed once before it self-destructs.
+                        </p>
+                    </div>
+                    <div id="private-message-form-container">
+                        <form id="privateMessageForm">
+                            <div class="card-content">
+                                <div class="form-group">
+                                    <label for="private-message">Your Secret Message</label>
+                                    <textarea 
+                                        id="private-message" 
+                                        placeholder="Write your one-time viewable message..." 
+                                        required
+                                    ></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="expiry-time">Message expires after</label>
+                                    <div class="select-wrapper">
+                                        <i class="fas fa-clock select-icon"></i>
+                                        <select id="expiry-time">
+                                            <option value="1">1 hour</option>
+                                            <option value="6">6 hours</option>
+                                            <option value="12">12 hours</option>
+                                            <option value="24" selected>24 hours</option>
+                                            <option value="48">48 hours</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary btn-block" id="createPrivateButton">
+                                    <i class="fas fa-paper-plane"></i> Create Secret Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div id="shareable-link-container" class="card-content hidden">
+                        <div class="success-message">
+                            <p>Your secret message has been created!</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="shareable-link">Shareable Link (can only be viewed once)</label>
+                            <div class="input-with-button">
+                                <input type="text" id="shareable-link" readonly>
+                                <button type="button" class="btn btn-outline" id="copyLinkButton">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="warning-message">
+                            <p>
+                                <strong>Important:</strong> This link will expire in <span id="expiryTimeDisplay">24</span> hours or immediately after being viewed once. Make sure to share it securely.
+                            </p>
+                        </div>
+                        
+                        <button type="button" class="btn btn-outline btn-block" id="createAnotherButton">
+                            Create Another Message
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Secret Confessions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/confess.js"></script>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
+
