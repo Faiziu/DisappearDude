@@ -83,7 +83,7 @@ if (privateMessageForm) {
     try {
       // Send data to the backend (corrected keys)
       const response = await fetch(
-        "http://localhost:5000/api/messages/private",
+        "https://disappeardude.onrender.com/api/messages/private",
         {
           method: "POST",
           headers: {
