@@ -9,10 +9,13 @@ Welcome to DisappearDude, Where user can confess anonymously without reveling th
 <img src="https://github.com/user-attachments/assets/79f388cf-22b5-4079-a7ae-b1b70742bcf9" width="100" height="30">
 <img src="https://github.com/user-attachments/assets/e4e82a58-f322-4bb3-af1c-fb22fca34931" width="100" height="30">
 
-Backend:-
-1.) Node Js
+
+### Backend:-
+<img src="https://github.com/user-attachments/assets/e4e82a58-f322-4bb3-af1c-fb22fca34931" width="100" height="30">
+<img src="https://github.com/user-attachments/assets/e4e82a58-f322-4bb3-af1c-fb22fca34931" width="100" height="30">
+
+
 2.) Express Js
-2.) Json
 Database:-
 1.) MongoDb
 # Screenshots
