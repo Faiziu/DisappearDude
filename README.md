@@ -32,5 +32,3 @@ Backend-
 We have used Render for deploying backend and handling the server of database.
 Database-
 We have used MongoDb to handle database.
-
-We created this web app in just 20 hours show some love.
