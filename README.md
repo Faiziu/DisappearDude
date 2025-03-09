@@ -11,8 +11,8 @@ Welcome to DisappearDude, Where user can confess anonymously without reveling th
 
 
 ### Backend:-
-<img src="https://github.com/user-attachments/assets/e4e82a58-f322-4bb3-af1c-fb22fca34931" width="100" height="30">
-<img src="https://github.com/user-attachments/assets/e4e82a58-f322-4bb3-af1c-fb22fca34931" width="100" height="30">
+<img src="https://github.com/user-attachments/assets/89be3e2d-536b-47a7-bc70-36d7bfa582c1" width="100" height="30">
+<img src="https://github.com/user-attachments/assets/e2ecc073-07b3-4cad-baf9-220bba7e142a" width="100" height="30">
 
 
 2.) Express Js
