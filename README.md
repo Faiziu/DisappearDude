@@ -14,10 +14,9 @@ Welcome to DisappearDude, Where user can confess anonymously without reveling th
 <img src="https://github.com/user-attachments/assets/89be3e2d-536b-47a7-bc70-36d7bfa582c1" width="100" height="30">
 <img src="https://github.com/user-attachments/assets/e2ecc073-07b3-4cad-baf9-220bba7e142a" width="100" height="30">
 
+### Database:-
+<img src="https://github.com/user-attachments/assets/d931ea2f-f707-4996-b307-2346eb892ff6" width="100" height="30">
 
-2.) Express Js
-Database:-
-1.) MongoDb
 # Screenshots
 ![Screenshot 2025-03-09 191034](https://github.com/user-attachments/assets/c621e9be-160a-49a6-af64-9001d002b79d)
 ![Screenshot 2025-03-09 191449](https://github.com/user-attachments/assets/017f2551-115d-4553-9681-3a3b70204347)
