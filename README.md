@@ -5,7 +5,7 @@ Welcome to DisappearDude, Where user can confess anonymously without reveling th
 
 # Languages which are used:-
 Frontend:-
-![HTML5_SF](https://github.com/user-attachments/assets/bff2edde-d1fb-4bff-90ad-4bc802ce82e1)
+![HTML5_SF](https://github.com/user-attachments/assets/bff2edde-d1fb-4bff-90ad-4bc802ce82e1 | width=100)
 
 2.) Css
 3.) JavaScript
