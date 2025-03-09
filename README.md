@@ -13,10 +13,14 @@ Backend:-
 2.) Express Js
 2.) Json
 Database:-
-1.) MongoDb
+1.) M////ongoDb
 # Screenshots
-![Screenshot 2025-03-09 191449](https://github.com/user-attachments/assets/de99c97c-e8c5-4d96-8108-d00a7a9de86d)
-![Screenshot 2025-03-09 191034](https://github.com/user-attachments/assets/8d3a1e57-0061-4b3c-9fc7-cd54aff7588d)
+![Screenshot 2025-03-09 191522](https://github.com/user-attachments/assets/80bd82bd-3bcd-40a0-9c4c-2b67a0aa8046)
+![Screenshot 2025-03-09 191449](https://github.com/user-attachments/assets/017f2551-115d-4553-9681-3a3b70204347)
+![Screenshot 2025-03-09 191522](https://github.com/user-attachments/assets/819694e8-aa17-4f35-b580-ed6f270a09a8)
+![Screenshot 2025-03-09 191612](https://github.com/user-attachments/assets/62e7c7c8-c267-4d01-9a50-eb431d8b09fa)
+![Screenshot 2025-03-09 191709](https://github.com/user-attachments/assets/7d3d69d3-7f0a-438c-9593-4a7d2adf0ea9)
+![Screenshot 2025-03-09 191638](https://github.com/user-attachments/assets/500412b8-e294-45bf-bed9-096aef7373f4)
 
 Platforms which we have used for deploying our website are:-
 Frontend-
