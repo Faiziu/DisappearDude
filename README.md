@@ -6,7 +6,7 @@ Welcome to DisappearDude, Where user can confess anonymously without reveling th
 # Languages which are used:-
 ### Frontend:-
 <img src="https://github.com/user-attachments/assets/bff2edde-d1fb-4bff-90ad-4bc802ce82e1" width="100" height="30">
-<img src="https://github.com/user-attachments/assets/b82c027e-4ac8-44dc-affb-3eee2b15d3af" width="100" height="30">
+<img src="https://github.com/user-attachments/assets/b82c027e-4ac8-44dc-affb-3eee2b15d3af" width="70" height="30">
  
 
 2.) Css
