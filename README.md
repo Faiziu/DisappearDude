@@ -15,9 +15,8 @@ Backend:-
 Database:-
 1.) MongoDb
 # Screenshots
-![Screenshot 2025-03-09 191522](https://github.com/user-attachments/assets/963aa77f-8a09-4b87-b826-308ed5374447)
-![Screenshot 2025-03-09 191449](https://github.com/user-attachments/assets/cc2893c8-5cef-4a1c-8e65-351133b3d989)
-![Screenshot 2025-03-09 191034](https://github.com/user-attachments/assets/0b69231e-c2fa-4045-820e-6684e42eeec0)
+![Screenshot 2025-03-09 191449](https://github.com/user-attachments/assets/de99c97c-e8c5-4d96-8108-d00a7a9de86d)
+![Screenshot 2025-03-09 191034](https://github.com/user-attachments/assets/8d3a1e57-0061-4b3c-9fc7-cd54aff7588d)
 
 Platforms which we have used for deploying our website are:-
 Frontend-
