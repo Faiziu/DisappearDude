@@ -1,4 +1,4 @@
-# DisappearDude
+# DisappearDude - Private Confessions, Self-Destructing-Features & Public Confessions. 
 This is read me file.
 
 We have created this platform for anonymous confession or secret confession without reviling your identity out main motive is to secure users privacy.
