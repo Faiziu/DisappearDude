@@ -3,9 +3,10 @@
 
 Welcome to DisappearDude, Where user can confess anonymously without reveling their true identity, send self-distructing messages and view public confession all in one. We have integrated a system in which if someone sees a message once using link which will be provided through our platform the message will be completely removed from the database using Cron job.
 
-Languages which are used:-
+# Languages which are used:-
 Frontend:-
-1.) Html
+![HTML5_SF](https://github.com/user-attachments/assets/bff2edde-d1fb-4bff-90ad-4bc802ce82e1)
+
 2.) Css
 3.) JavaScript
 Backend:-
